@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SockStoreAPI.Data;
 using SockStoreAPI.Auth;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +25,7 @@ builder.Services.AddCors(options =>
 
 // DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(
+    options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<JwtService>();
@@ -39,6 +40,16 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 //Achivos estaticos
+var imagesPath = Path.Combine(
+    Directory.GetCurrentDirectory(),
+    "Images"
+);
+
+if (!Directory.Exists(imagesPath))
+{
+    Directory.CreateDirectory(imagesPath);
+}
+
 app.UseStaticFiles();
 
 app.UseStaticFiles(new StaticFileOptions
@@ -60,3 +71,5 @@ app.Run();
 
 //DataBase Password = GgYy44OoPpmM
 //DataBase Name = SockStore
+
+//"DefaultConnection": "Server=localhost;Database=SockStoreDB;Trusted_Connection=True;TrustServerCertificate=True;"
