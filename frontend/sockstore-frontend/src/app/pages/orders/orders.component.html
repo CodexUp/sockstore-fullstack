@@ -1,0 +1,108 @@
+<div class="p-8">
+
+    <h1 class="text-4xl font-bold mb-8">
+      📦 Historial de Órdenes
+    </h1>
+  
+    <div class="overflow-x-auto bg-white rounded-2xl shadow-lg">
+  
+      <table class="w-full">
+  
+        <thead class="bg-black text-white">
+  
+          <tr>
+  
+            <th class="p-4 text-left">
+              Cliente
+            </th>
+  
+            <th class="p-4 text-left">
+              Dirección
+            </th>
+  
+            <th class="p-4 text-left">
+              Teléfono
+            </th>
+  
+            <th class="p-4 text-left">
+              Total
+            </th>
+  
+            <th class="p-4 text-left">
+              Fecha
+            </th>
+
+            <th class="p-4 text-left">
+                Estado
+            </th>
+
+            <th class="p-4 text-left">
+                Acción
+            </th>
+  
+          </tr>
+  
+        </thead>
+  
+        <tbody>
+  
+          <tr
+            *ngFor="let order of orders"
+            class="border-b hover:bg-gray-100"
+          >
+  
+            <td class="p-4">
+              {{ order.customerName }}
+            </td>
+  
+            <td class="p-4">
+              {{ order.address }}
+            </td>
+  
+            <td class="p-4">
+              {{ order.phone }}
+            </td>
+  
+            <td class="p-4 font-bold text-emerald-600">
+              ₡ {{ order.total }}
+            </td>
+  
+            <td class="p-4">
+              {{ order.createdAt | date:'short' }}
+            </td>
+
+            <td class="p-4">
+
+                <span
+                  class="px-3 py-1 rounded-full text-white"
+                  [ngClass]="{
+                    'bg-yellow-500': !order.status || order.status === 'Pending',
+                    'bg-green-600': order.status === 'Completed'
+                  }"
+                >
+                 {{ order.status || 'Pending' }}
+                </span>
+              
+            </td>
+
+            <td class="p-4">
+
+                <button
+                  *ngIf="order.status !== 'Completed'"
+                  (click)="completeOrder(order.id!)"
+                  class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+                >
+                  ✔ Completar
+                </button>
+              
+            </td>
+  
+          </tr>
+  
+        </tbody>
+  
+      </table>
+  
+    </div>
+  
+  </div>

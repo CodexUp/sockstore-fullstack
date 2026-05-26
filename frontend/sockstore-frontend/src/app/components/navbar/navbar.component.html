@@ -1,0 +1,59 @@
+<nav class="bg-black text-white px-8 py-5 flex justify-between items-center">
+
+    <a
+      routerLink="/"
+      class="text-3xl font-bold"
+    >
+      🧦 SockStore
+    </a>
+  
+    <div class="flex gap-6 text-xl">
+  
+      <a
+        routerLink="/"
+        class="hover:text-gray-300"
+      >
+        Productos
+      </a>
+  
+      <a
+        routerLink="/cart"
+        class="hover:text-gray-300"
+      >
+        🛒 Carrito
+      </a>
+      
+      <a
+        routerLink="/orders"
+        class="hover:text-gray-300"
+      >
+        📦 Órdenes
+      </a>
+
+      <a
+        *ngIf="isLoggedIn()"
+        routerLink="/admin"
+        class="hover:text-gray-300"
+      >
+        Admin
+      </a>
+
+      <a
+      *ngIf="!isLoggedIn()"
+        routerLink="/login"
+        class="hover:text-gray-300"
+      >
+      🔐 Login 
+      </a>
+
+      <button
+      *ngIf="isLoggedIn()"
+      (click)="logout()"
+      class="hover:text-red-400"
+      >
+      🚪 Cerrar sesion
+      </button>
+  
+    </div>
+  
+  </nav>

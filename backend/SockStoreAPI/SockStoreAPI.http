@@ -1,0 +1,6 @@
+@SockStoreAPI_HostAddress = http://localhost:5144
+
+GET {{SockStoreAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
