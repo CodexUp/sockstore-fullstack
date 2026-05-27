@@ -8,7 +8,7 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  private apiUrl = 'http://localhost:5144/api/products';
+  private apiUrl = 'https://sockstore-fullstack.onrender.com/api/products';
 
   constructor(private http: HttpClient) { }
 

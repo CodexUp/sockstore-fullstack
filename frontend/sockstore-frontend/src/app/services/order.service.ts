@@ -12,7 +12,7 @@ import { Order } from '../models/order';
 export class OrderService {
 
   private apiUrl =
-    'http://localhost:5144/api/orders';
+    'https://sockstore-fullstack.onrender.com/api/orders';
 
   constructor(
     private http: HttpClient

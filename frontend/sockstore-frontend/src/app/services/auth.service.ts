@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:5144/api/Auth';
+  private apiUrl = 'https://sockstore-fullstack.onrender.com/api/Auth';
 
   constructor(private http: HttpClient) {}
 
