@@ -4,12 +4,14 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
+import { jwtDecode } from 'jwt-decode';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'https://sockstore-fullstack.onrender.com/api/Auth';
+  private apiUrl = 'http://localhost:5144/api/Auth';
 
   constructor(private http: HttpClient) {}
 
@@ -58,6 +60,36 @@ export class AuthService {
 
     return !!this.getToken();
 
+  }
+
+  getRole(): string{
+    const token = this.getToken();
+
+    if(!token){
+      return '';
+    }
+
+    const decode: any = jwtDecode(token);
+
+    return decode[
+      'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+      
+    ] || '';
+  }
+
+  isAdmin(): boolean {
+    return this.getRole() === 'Admin';
+  }
+
+  isCustomer(): boolean{
+    return this.getRole() === 'User';
+  }
+
+  register(data: any): Observable<any> {
+    return this.http.post(
+      `${this.apiUrl}/register`,
+      data
+    );
   }
 
 }

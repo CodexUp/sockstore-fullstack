@@ -1,16 +1,51 @@
 <div class="min-h-screen bg-gray-100 py-10">
 
-    <div class="flex flex-wrap justify-center gap-8 px-6">
+  <div class="max-w-md mx-auto mb-8">
+    <input
+    [(ngModel)]="searchText"
+    placeholder="🔍 Buscar producto..."
+    class="w-full border p-3 rounded-xl shadow-sm"
+    >
+  </div>
+
+  <div class="max-w-md mx-auto mb-4">
+    <label class="font-bold">
+      Precio máximo:
+      {{ maxPrice }}
+    </label>
+
+    <input
+      type="range"
+      min="0"
+      max="10000"
+      step="500"
+      [(ngModel)]="maxPrice"
+      class="w-full"
+    >
+  </div>
+
+  <div class="flex justify-center mb-8">
+    <label class="flex gap-2">
+      <input
+        type="checkbox"
+        [(ngModel)]="onlyAvailable"
+      >
+
+      Solo disponibles
+    </label>
+  </div>
+
+    <div class="flex flex-wrap justify-center gap-6 px-4 md:px-6">
   
       <div
-        *ngFor="let product of products"
-        class="bg-white rounded-2xl shadow-lg w-72 overflow-hidden hover:scale-105 transition duration-300"
+      *ngFor="let product of paginatedProducts"
+        class="bg-white rounded-2xl shadow-lg w-full sm:w-80 md:w-72 overflow-hidden hover:scale-105 transition duration-300"
       >
   
         <img
           [src]="product.imageUrl"
           alt=""
-          class="w-full h-72 object-cover"
+          class="w-full h-56 object-cover sm:h-64 md:h-72"
         >
   
         <div class="p-5">
@@ -26,18 +61,92 @@
           <h3 class="text-3xl font-bold text-green-600 mb-4">
             ₡ {{ product.price }}
           </h3>
-  
-          <button
-            (click)="addToCart(product)"
-            class="bg-black text-white w-full py-3 rounded-xl hover:bg-gray-800 transition"
+          <div
+            *ngIf="product.stock > 0 && product.stock < 6"
+            class="text-red-600 font-bold text-sm mb-2"
           >
-            Agregar al carrito
+            ⚠️ Solo quedan {{ product.stock }} unidades
+          </div>
+          <!-- Agotado -->
+
+          <button
+            *ngIf="product.stock <= 0"
+            disabled
+            class="bg-gray-400 text-white w-full py-2 rounded-lg cursor-not-allowed"
+            >
+            ❌ Agotado
+          </button>
+
+          <button
+            (click)="addToWishlist(product.id!)"
+            class="bg-pink-600 text-white px-4 py-2 rounded-lg mb-2 w-full"
+          >
+            ❤️ Favorito
+          </button>
+
+          <!-- Agregar al carrito -->
+
+          <button
+            *ngIf="product.stock > 0 && !isInCart(product.id!)"
+            (click)="addToCart(product)"
+            class="bg-black text-white px-4 py-2 rounded-lg mb-2 w-full"
+            >
+            🛒 Agregar al carrito
+          </button>
+
+          <!-- Ya agregado -->
+
+          <button
+            *ngIf="product.stock > 0 && isInCart(product.id!)"
+            routerLink="/cart"
+            class="bg-green-600 text-white w-full px-4 py-2 rounded-lg"
+            >
+            ✔ Ya agregado
           </button>
   
         </div>
   
       </div>
   
+    </div>
+
+    <div
+      class="flex justify-center items-center gap-4 mt-10"
+    >
+
+      <button
+        (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+        class="
+          bg-gray-300
+          px-4
+          py-2
+          rounded-lg
+          disabled:opacity-50
+        "
+      >
+        ⬅ Anterior
+      </button>
+
+      <span class="font-bold">
+        Página {{ currentPage }}
+        de {{ totalPages }}
+      </span>
+
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+        class="
+          bg-gray-300
+          px-4
+          py-2
+          rounded-lg
+          disabled:opacity-50
+        "
+      >
+        Siguiente ➡
+      </button>
+
     </div>
   
   </div>

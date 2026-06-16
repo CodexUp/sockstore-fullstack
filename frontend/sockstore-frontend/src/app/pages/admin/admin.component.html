@@ -1,4 +1,4 @@
-<div class="p-8">
+<div class="p-4 md:p-8">
 
   <div class="flex justify-between items-center mb-8">
 
@@ -9,6 +9,61 @@
 
 
   </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 mt-6"
+  >
+
+    <div class="bg-white shadow-lg rounded-xl p-5 text-center">
+      <h3 class="text-gray-500">
+        Productos
+      </h3>
+
+      <p class="text-3xl font-bold">
+        {{ stats.totalProducts }}
+      </p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-5 text-center">
+      <h3 class="text-gray-500">
+        Órdenes
+      </h3>
+
+      <p class="text-3xl font-bold">
+        {{ stats.totalOrders }}
+      </p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-5 text-center">
+      <h3 class="text-gray-500">
+        Ventas
+      </h3>
+
+      <p class="text-3xl font-bold">
+        ₡ {{ stats.totalSales }}
+      </p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-5 text-center">
+      <h3 class="text-gray-500">
+        Pendientes
+      </h3>
+
+      <p class="text-3xl font-bold">
+        {{ stats.pendingOrders }}
+      </p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-5 text-center">
+      <h3 class="text-gray-500">
+        Completadas
+      </h3>
+
+      <p class="text-3xl font-bold">
+        {{ stats.completedOrders }}
+      </p>
+    </div>
+
+</div>
 
   <div
     class="bg-white shadow-lg rounded-2xl p-6 mb-8">
@@ -54,12 +109,12 @@
     <img
       *ngIf="selectedProduct.imageUrl"
       [src]="selectedProduct.imageUrl"
-      class="w-40 h-40 object-cover rounded-lg"
+      class="w-40 h-40 object-cover rounded-lg mx-auto"
     />
 
     <button
       (click)="saveProduct()"
-      class="bg-green-600 text-white p-3 rounded-lg hover:bg-green-700"
+      class="bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 w-full"
     >
     {{ isEditing ? '💾 Guardar Cambios' : '➕ Crear Producto' }}
     </button> 
@@ -77,7 +132,7 @@
 
       <img
         [src]="product.imageUrl"
-        class="w-full h-64 object-cover"
+        class="w-full h-56 md:h-64 object-cover"
       >
 
       <div class="p-5">
@@ -94,7 +149,7 @@
           ₡ {{ product.price }}
         </p>
 
-        <div class="flex gap-3">
+        <div class="flex flex-col sm:flex-row gap-3">
 
           <button
             (click)="editProduct(product)"

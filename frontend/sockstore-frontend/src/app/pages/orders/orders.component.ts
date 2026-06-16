@@ -17,6 +17,8 @@ export class OrdersComponent implements OnInit {
 
   orders: Order[] = [];
 
+  expandedOrderId: number | null = null;
+
   constructor(
     private orderService: OrderService
   ) {}
@@ -68,6 +70,20 @@ export class OrdersComponent implements OnInit {
         }
   
       });
+  
+  }
+
+  toggleProducts(orderId: number) {
+
+    if (this.expandedOrderId === orderId) {
+  
+      this.expandedOrderId = null;
+  
+    } else {
+  
+      this.expandedOrderId = orderId;
+  
+    }
   
   }
 

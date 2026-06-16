@@ -1,3 +1,50 @@
-<app-navbar></app-navbar>
+<div class="min-h-screen flex flex-col">
 
-<router-outlet></router-outlet>
+    <app-navbar></app-navbar>
+  
+    <main class="flex-1">
+  
+      <router-outlet></router-outlet>
+  
+    </main>
+  
+    <footer
+      class="
+        bg-black
+        text-white
+        py-8
+        w-full
+      "
+    >
+  
+      <div
+        class="
+          text-center
+          px-4
+          flex
+          flex-col
+          items-center
+        "
+      >
+  
+        <h3 class="text-2xl font-bold">
+          🧦 SockStore
+        </h3>
+  
+        <p class="text-gray-400 mt-3 text-center">
+          Proyecto Full Stack desarrollado con Angular, ASP.NET Core y PostgreSQL.
+        </p>
+  
+        <p class="text-gray-500 text-sm mt-3 text-center">
+          Aplicación creada como proyecto de portafolio.
+        </p>
+  
+        <p class="text-gray-600 text-xs mt-4 text-center">
+          © 2026 Roberto Rodriguez
+        </p>
+  
+      </div>
+  
+    </footer>
+  
+  </div>

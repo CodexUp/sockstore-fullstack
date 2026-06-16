@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 import { Router } from '@angular/router';
 
@@ -11,7 +12,8 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -24,7 +26,7 @@ export class LoginComponent {
   };
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {}
 
@@ -57,7 +59,7 @@ export class LoginComponent {
 
   }
 
-  //if (login.Email == "admin@test.com" &&
+  //if (login.Email == "admin@sockstore.com" &&
   //login.Password == "123456")
 
 }

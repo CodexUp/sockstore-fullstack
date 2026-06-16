@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
@@ -12,21 +12,35 @@ import { Order } from '../models/order';
 export class OrderService {
 
   private apiUrl =
-    'https://sockstore-fullstack.onrender.com/api/orders';
+    'http://localhost:5144/api/orders';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  createOrder(
-    order: Order
-  ): Observable<Order> {
+  createOrder(order: Order) {
 
-    return this.http.post<Order>(
+    let token = '';
+
+    if (typeof window !== 'undefined')
+    {
+        token =
+          localStorage.getItem('token')
+          || '';
+    }
+  
+    const headers =
+      new HttpHeaders({
+        Authorization:
+          `Bearer ${token}`
+      });
+  
+    return this.http.post(
       this.apiUrl,
-      order
+      order,
+      { headers }
     );
-
+  
   }
 
   getOrders(): Observable<Order[]> {
@@ -40,6 +54,23 @@ export class OrderService {
     `${this.apiUrl}/${id}/complete`,
     {}
     );
+  }
+
+  getMyOrders() {
+
+    const token =
+      localStorage.getItem('token');
+  
+    return this.http.get<any[]>(
+      `${this.apiUrl}/my-orders`,
+      {
+        headers: {
+          Authorization:
+            `Bearer ${token}`
+        }
+      }
+    );
+  
   }
 
 }

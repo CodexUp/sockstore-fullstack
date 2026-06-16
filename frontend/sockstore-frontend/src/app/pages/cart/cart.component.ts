@@ -23,8 +23,21 @@ export class CartComponent implements OnInit {
   }
 
   add(item: CartItem) {
-    this.cartService.addToCart(item.product);
-    this.cartItems = this.cartService.getCartItems();
+
+    if (
+      item.quantity >= item.product.stock
+    ) {
+  
+      alert(
+        `⚠️ Solo hay ${item.product.stock} unidades disponibles`
+      );
+  
+      return;
+  
+    }
+  
+    item.quantity++;
+  
   }
 
   remove(item: CartItem) {

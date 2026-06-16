@@ -22,6 +22,7 @@ namespace SockStoreAPI.Controllers
             return await _context.Products.ToListAsync();
         }
 
+
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(Product product)
         {
@@ -62,6 +63,7 @@ namespace SockStoreAPI.Controllers
 
             return NoContent();
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)

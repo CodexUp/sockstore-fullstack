@@ -1,3 +1,5 @@
+import { OrderItem } from "./order-item";
+
 export interface Order {
 
     id?: number;
@@ -13,5 +15,7 @@ export interface Order {
     createdAt?: Date;
 
     status?: string;
+
+    items: OrderItem[];
   
   }

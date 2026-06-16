@@ -10,6 +10,10 @@ import { FormsModule } from '@angular/forms';
 
 import { UploadService } from '../../services/upload.service';
 
+import { DashboardService } from '../../services/dashboard.service';
+
+import { DashboardStats } from '../../models/dashboard-stats';
+
 @Component({
   selector: 'app-admin',
 
@@ -36,14 +40,30 @@ export class AdminComponent implements OnInit {
   
   isEditing = false;
 
+  stats: DashboardStats = {
+
+    totalProducts: 0,
+  
+    totalOrders: 0,
+  
+    totalSales: 0,
+  
+    pendingOrders: 0,
+  
+    completedOrders: 0
+  
+  };
+
   constructor(
     private productService: ProductService,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private DashboardService: DashboardService
   ) {}
 
   ngOnInit(): void {
 
     this.loadProducts();
+    this.loadStats();
 
   }
 
@@ -76,6 +96,7 @@ export class AdminComponent implements OnInit {
     .subscribe({
       next: () => {
         this.loadProducts();
+        this.loadStats();
       },
 
       error: (err) => {
@@ -98,6 +119,7 @@ export class AdminComponent implements OnInit {
           next: () => {
             this.loadProducts();
             this.resetForm();
+            this.loadStats();
           },
           error: (err) => {
             console.log(err);
@@ -111,6 +133,7 @@ export class AdminComponent implements OnInit {
           next: () => {
             this.loadProducts();
             this.resetForm();
+            this.loadStats();
           },
           error: (err) => {
             console.log(err);
@@ -161,6 +184,20 @@ export class AdminComponent implements OnInit {
   
       });
   
+  }
+
+  loadStats()
+  {
+    this.DashboardService
+    .getStats()
+    .subscribe({
+      next: (data) => {
+        this.stats = data;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
 }

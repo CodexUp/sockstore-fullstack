@@ -92,4 +92,12 @@ export class CartService {
       localStorage.removeItem('cart');
     }
   }
+
+  isInCart(productId: number): boolean {
+
+    return this.cartItems.some(
+      item => item.product.id === productId
+    );
+  
+  }
 }

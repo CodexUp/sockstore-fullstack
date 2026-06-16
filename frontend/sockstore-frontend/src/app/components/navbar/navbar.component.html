@@ -1,5 +1,4 @@
-<nav class="bg-black text-white px-8 py-5 flex justify-between items-center">
-
+<nav class=" bg-black text-white px-4 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
     <a
       routerLink="/"
       class="text-3xl font-bold"
@@ -7,13 +6,21 @@
       🧦 SockStore
     </a>
   
-    <div class="flex gap-6 text-xl">
-  
+    <div class=" flex flex-col md:flex-row items-center gap-4 text-center">
+
       <a
         routerLink="/"
         class="hover:text-gray-300"
       >
         Productos
+      </a>
+
+      <a
+        *ngIf="isLoggedIn()"
+        routerLink="/wishlist"
+        class="hover:text-gray-300"
+      >
+        ❤️ Wishlist
       </a>
   
       <a
@@ -24,18 +31,26 @@
       </a>
       
       <a
+        *ngIf="isAdmin()"
         routerLink="/orders"
         class="hover:text-gray-300"
       >
         📦 Órdenes
       </a>
-
       <a
         *ngIf="isLoggedIn()"
+        routerLink="/my-orders"
+        class="hover:text-gray-300"
+      >
+        📦 Mis Compras
+      </a>
+
+      <a
+        *ngIf="isAdmin()"
         routerLink="/admin"
         class="hover:text-gray-300"
       >
-        Admin
+        📊 Dashboard
       </a>
 
       <a
@@ -46,10 +61,18 @@
       🔐 Login 
       </a>
 
+      <a
+        *ngIf="isLoggedIn()"
+        routerLink="/profile"
+        class="hover:text-gray-300"
+      >
+        👤 Perfil
+      </a>
+
       <button
       *ngIf="isLoggedIn()"
       (click)="logout()"
-      class="hover:text-red-400"
+      class="hover:text-red-400 transition"
       >
       🚪 Cerrar sesion
       </button>

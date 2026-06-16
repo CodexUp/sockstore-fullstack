@@ -1,0 +1,77 @@
+<div
+  class="min-h-screen bg-gray-100 p-10"
+>
+
+  <h1
+    class="text-4xl font-bold mb-8"
+  >
+    ❤️ Mi Wishlist
+  </h1>
+
+  <div
+    *ngFor="let item of wishlist"
+    class="bg-white p-6 rounded-xl shadow mb-4"
+  >
+
+    <div
+      class="bg-white p-6 rounded-xl shadow mb-4 flex flex-col md:flex-row gap-4 items-center"
+    >
+
+      <img
+      [src]="item.product.imageUrl"
+      class="w-24 h-24 object-cover rounded-lg"
+      >
+
+      <div class="flex-1">
+
+        <h2
+          class="text-xl font-bold"
+        >
+          {{ item.product.name }}
+        </h2>
+
+        <p>
+          ₡ {{ item.product.price }}
+        </p>
+
+      </div>
+
+      <div
+        *ngIf="
+         item.product.stock > 0 &&
+        item.product.stock < 6
+        "
+        class="text-red-600 font-bold"
+      >
+        ⚠️ Solo quedan
+        {{ item.product.stock }}
+      </div>
+
+      <button
+       *ngIf="item.product.stock > 0"
+       (click)="moveToCart(item)"
+       class="bg-black text-white px-4 py-2 rounded"
+      >
+       🛒 Mover al carrito
+      </button>
+
+      <button
+        *ngIf="item.product.stock <= 0"
+        disabled
+        class="bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed"
+      >
+       ❌ Agotado
+      </button>
+
+      <button
+        (click)="remove(item.product.id)"
+        class="bg-red-600 text-white px-4 py-2 rounded"
+      >
+        ❌ Quitar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

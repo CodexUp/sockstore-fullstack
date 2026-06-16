@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class UploadService {
 
   private apiUrl =
-    'https://sockstore-fullstack.onrender.com/api/upload';
+    'http://localhost:5144/api/upload';
 
   constructor(
     private http: HttpClient

@@ -38,6 +38,8 @@ namespace SockStoreAPI.Controllers
                 return BadRequest("El usuario ya existe");
             }
 
+            user.Role = "User";
+
             _context.Users.Add(user);
 
             await _context.SaveChangesAsync();
@@ -46,7 +48,7 @@ namespace SockStoreAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(User loginUser)
+        public async Task<IActionResult> Login(LoginDto loginUser)
         {
             var user = await _context.Users
                 .FirstOrDefaultAsync(

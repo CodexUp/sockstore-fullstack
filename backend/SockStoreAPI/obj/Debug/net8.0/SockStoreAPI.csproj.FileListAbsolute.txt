@@ -140,3 +140,5 @@ D:\SocksStore\backend\SockStoreAPI\obj\Debug\net8.0\SockStoreAPI.genruntimeconfi
 D:\SocksStore\backend\SockStoreAPI\obj\Debug\net8.0\ref\SockStoreAPI.dll
 D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Npgsql.dll
 D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\SocksStore\backend\SockStoreAPI\obj\Debug\net8.0\SockStoreAPI.sourcelink.json
+D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
