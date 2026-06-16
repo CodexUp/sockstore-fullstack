@@ -50,6 +50,10 @@ namespace SockStoreAPI.Data
                 .HasOne(w => w.Product)
                 .WithMany()
                 .HasForeignKey(w => w.ProductId);
+            
+            modelBuilder.Entity<OrderItem>()
+                .Property(oi => oi.Price)
+                .HasPrecision(18, 2);
         }
 
         public DbSet<OrderItem> OrderItems { get; set; }
