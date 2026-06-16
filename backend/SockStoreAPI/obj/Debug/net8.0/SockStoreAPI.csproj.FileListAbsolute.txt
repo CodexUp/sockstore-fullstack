@@ -142,3 +142,9 @@ D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Npgsql.dll
 D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\SocksStore\backend\SockStoreAPI\obj\Debug\net8.0\SockStoreAPI.sourcelink.json
 D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\SocksStore\backend\SockStoreAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
