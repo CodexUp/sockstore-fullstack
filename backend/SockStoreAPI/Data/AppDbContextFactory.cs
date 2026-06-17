@@ -7,12 +7,15 @@ namespace SockStoreAPI.Data
     {
         public AppDbContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            var optionsBuilder =
+                new DbContextOptionsBuilder<AppDbContext>();
 
-            optionsBuilder.UseSqlServer(
-                "Server=localhost;Database=SockStoreDB;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseNpgsql(
+                "Host=localhost;Database=SockStoreDB;Username=postgres;Password=postgres");
 
-            return new AppDbContext(optionsBuilder.Options);
+            return new AppDbContext(
+                optionsBuilder.Options
+            );
         }
     }
 }

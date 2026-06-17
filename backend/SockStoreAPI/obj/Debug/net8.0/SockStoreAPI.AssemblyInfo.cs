@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SockStoreAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3fd2fbb9d924a717acbb310325d6682af3224f0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12def8d3d1b481522677acbad97b39d4067664d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("SockStoreAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SockStoreAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
