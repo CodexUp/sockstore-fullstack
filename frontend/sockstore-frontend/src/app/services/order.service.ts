@@ -6,13 +6,14 @@ import { Observable } from 'rxjs';
 
 import { Order } from '../models/order';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  private apiUrl =
-    'http://localhost:5144/api/orders';
+  private apiUrl = `${environment.apiUrl}/orders`;
 
   constructor(
     private http: HttpClient

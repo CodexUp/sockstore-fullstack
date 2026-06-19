@@ -6,13 +6,14 @@ import { Observable } from 'rxjs';
 
 import { DashboardStats } from '../models/dashboard-stats';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  private apiUrl =
-    'http://localhost:5144/api/dashboard';
+  private apiUrl = `${environment.apiUrl}/dashboard`;
 
   constructor(private http: HttpClient) {}
 

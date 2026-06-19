@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 import {
   HttpClient,
@@ -11,8 +12,7 @@ import {
 })
 export class WishlistService {
 
-  private apiUrl =
-    'http://localhost:5144/api/Wishlist';
+  private apiUrl = `${environment.apiUrl}/Wishlist`;
 
     constructor(
       private http: HttpClient,
