@@ -69,5 +69,29 @@ namespace SockStoreAPI.Controllers
                 token
             });
         }
+
+        [HttpPut("make-admin/{email}")]
+        public async Task<IActionResult> MakeAdmin(string email)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+            {
+                return NotFound("Usuario no encontrado");
+            }
+
+            user.Role = "Admin";
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Usuario convertido en administrador",
+                user.Email,
+                user.Role
+            });
+        }
+        
     }
 }
