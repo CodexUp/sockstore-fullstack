@@ -59,6 +59,14 @@ namespace SockStoreAPI.Controllers
             {
                 order.UserId = int.Parse(userId);
             }
+
+            order.CreatedAt = DateTime.UtcNow;
+
+            if (string.IsNullOrEmpty(order.Status))
+            {
+                order.Status = "Pending";
+            }
+
             _context.Orders.Add(order);
 
             await _context.SaveChangesAsync();

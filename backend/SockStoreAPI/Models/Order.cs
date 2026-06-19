@@ -12,7 +12,7 @@ namespace SockStoreAPI.Models
 
         public decimal Total { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now.ToLocalTime();
 
         public string Status { get; set; } = "Pending";   
 
